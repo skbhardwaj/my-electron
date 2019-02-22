@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>Webview</title>
+        <style>
+            html,
+            body {
+                width: 100vw;
+                height: 100vh;
+                margin: 0;
+                padding: 0;
+            }
+
+            webview {
+                border: 1px solid;
+                height: 100vh; /* Viewport-relative units */
+                width: 100vw;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div>
+            <div>
+                <h2>We have the website embedded below!</h2>
+            </div>
+            <webview src="http://www.google.com/" autosize="on"
+                ><div class="indicator"></div
+            ></webview>
+        </div>
+
+        <script type="text/javascript">
+            // Event handlers for loading events.
+            // Use these to handle loading screens, transitions, etc
+            onload = () => {
+                const webview = document.getElementById("foo");
+                const indicator = document.querySelector(".indicator");
+
+                const loadstart = () => {
+                    indicator.innerText = "loading...";
+                };
+
+                const loadstop = () => {
+                    indicator.innerText = "";
+                };
+
+                webview.addEventListener("did-start-loading", loadstart);
+                webview.addEventListener("did-stop-loading", loadstop);
+            };
+        </script>
+    </body>
+</html>
