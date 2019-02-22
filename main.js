@@ -1,8 +1,9 @@
-const { app, BrowserWindow, ipcMain } = require("electron");
+const { app, BrowserWindow, ipcMain, Menu, MenuItem } = require("electron");
 const url = require("url");
 const path = require("path");
 
 let win;
+const param = process.argv[2];
 
 const createWindow = () => {
     //   process.argv.forEach(function(val, index, array) {
@@ -11,14 +12,16 @@ const createWindow = () => {
 
     let filePath = "app/00/index.html";
 
-    const param = process.argv[2];
-
     if (param) {
         filePath = "app/" + param + "/index.html";
     }
 
     if (param === "04") {
-        handle04();
+        app04();
+    }
+
+    if (param === "05") {
+        app05();
     }
 
     win = new BrowserWindow({ width: 800, height: 600 });
@@ -31,7 +34,89 @@ const createWindow = () => {
     );
 };
 
-const handle04 = () => {
+const app05 = () => {
+    const template = [
+        {
+            label: "Edit",
+            submenu: [
+                {
+                    role: "undo"
+                },
+                {
+                    role: "redo"
+                },
+                {
+                    type: "separator"
+                },
+                {
+                    role: "cut"
+                },
+                {
+                    role: "copy"
+                },
+                {
+                    role: "paste"
+                }
+            ]
+        },
+
+        {
+            label: "View",
+            submenu: [
+                {
+                    role: "reload"
+                },
+                {
+                    role: "toggledevtools"
+                },
+                {
+                    type: "separator"
+                },
+                {
+                    role: "resetzoom"
+                },
+                {
+                    role: "zoomin"
+                },
+                {
+                    role: "zoomout"
+                },
+                {
+                    type: "separator"
+                },
+                {
+                    role: "togglefullscreen"
+                }
+            ]
+        },
+
+        {
+            role: "window",
+            submenu: [
+                {
+                    role: "minimize"
+                },
+                {
+                    role: "close"
+                }
+            ]
+        },
+
+        {
+            role: "help",
+            submenu: [
+                {
+                    label: "Learn More"
+                }
+            ]
+        }
+    ];
+
+    const menu = Menu.buildFromTemplate(template);
+    Menu.setApplicationMenu(menu);
+};
+
+const app04 = () => {
     ipcMain.on("openFile", (event, path) => {
         const { dialog } = require("electron");
         const fs = require("fs");
