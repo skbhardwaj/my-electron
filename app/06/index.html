@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>Tray icon</title>
+    </head>
+    <body>
+        <script type="text/javascript">
+            const { remote } = require("electron");
+            const { Tray, Menu } = remote;
+            const path = require("path");
+            const imgPath = "./../../data/beyond-happiness.jpg"; // "/Users/shrikrishna.bhardwaj/Desktop/misc/beyond-happiness.jpg";
+
+            let trayIcon = new Tray(path.join("", imgPath));
+
+            const trayMenuTemplate = [
+                {
+                    label: "Empty Application",
+                    enabled: false
+                },
+
+                {
+                    label: "Settings",
+                    click: function() {
+                        console.log("Clicked on settings");
+                    }
+                },
+
+                {
+                    label: "Help",
+                    click: function() {
+                        console.log("Clicked on Help");
+                    }
+                }
+            ];
+
+            let trayMenu = Menu.buildFromTemplate(trayMenuTemplate);
+            trayIcon.setContextMenu(trayMenu);
+        </script>
+    </body>
+</html>
