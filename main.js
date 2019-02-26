@@ -10,7 +10,7 @@ const createWindow = () => {
     //     console.log(index + ": " + val);
     //   });
 
-    let filePath = "app/00/index.html";
+    let filePath = "app/_default/index.html";
 
     if (param) {
         filePath = "app/" + param + "/index.html";
