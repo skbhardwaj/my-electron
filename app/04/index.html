@@ -2,11 +2,11 @@
 <html>
     <head>
         <meta charset="UTF-8" />
-        <title>File read using system dialogs</title>
+        <title>04 - File read using system dialogs</title>
     </head>
 
     <body>
-        <a href="../_default/index.html">< Back to Application Home</a>
+        <a href="../_default/index.html">< Back to Application Home</a><br />
         <script type="text/javascript">
             const { ipcRenderer } = require("electron");
             ipcRenderer.send("openFile", () => {
