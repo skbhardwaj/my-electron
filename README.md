@@ -4,6 +4,6 @@ A small repo to understand Electron apps
 
 ## Steps
 
-To install use command: `npm install`
+To install dependencies use command: `npm install`.
 
-To install use command: `npm start <NAME_OF_DIRECTORY>`, for example `npm start 01`. If nothing is passed, it defaults to app/`00`.
+To start the application use command: `npm start`.

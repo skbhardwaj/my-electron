@@ -4,7 +4,6 @@ body {
 
 h1 {
     text-align: center;
-    margin: 10vh 0;
 }
 
 a {
@@ -20,4 +19,11 @@ li {
 
 .container {
     padding: 0 10vw;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    padding: 0 10vw 2vw;
+    font-size: 75%;
 }
