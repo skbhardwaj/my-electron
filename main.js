@@ -12,16 +12,16 @@ const createWindow = () => {
 
     let filePath = "app/_default/index.html";
 
-    if (param) {
+    if (param && param.indexOf("main") < 0) {
         filePath = "app/" + param + "/index.html";
     }
 
     if (param === "04") {
         app04();
-    }
-
-    if (param === "05") {
+    } else if (param === "05") {
         app05();
+    } else if (param === "09") {
+        app09();
     }
 
     win = new BrowserWindow({ width: 800, height: 600 });
@@ -141,6 +141,11 @@ const app04 = () => {
             });
         }
     });
+};
+
+const app09 = () => {
+    // Set the path where recordings will be saved
+    app.setPath("userData", __dirname + "/saved_recordings");
 };
 
 app.on("ready", createWindow);
